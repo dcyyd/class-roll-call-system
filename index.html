@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="班级点名系统，方便教师进行随机点名，支持名单导入、重置等功能。">
+        <meta name="keywords" content="班级点名系统, 随机点名, 名单导入">
+        <link rel="icon" href="./images/logo/logo.ico" type="image/x-icon">
+        <title>班级点名系统</title>
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+    <body>
+        <div class="particles" id="particles"></div>
+        <main class="container glowing-border">
+            <h1>🎓 班级点名系统</h1>
+            <div id="display" aria-live="polite" role="status">📁 请先导入学生名单</div>
+            <div class="button-group">
+                <div class="file-input">
+                    <button type="button" class="secondary" id="importButton">📤 导入名单</button>
+                    <input type="file" id="fileInput" accept=".txt" hidden>
+                </div>
+                <button id="startBtn">🎲 开始点名</button>
+                <button id="resetBtn" class="secondary">🔄 重置</button>
+            </div>
+            <ul class="student-list" id="studentList"></ul>
+        </main>
+        <!-- 新增帮助手册入口 -->
+        <div class="manual-trigger" onclick="toggleManual()" role="button" aria-label="打开帮助手册">❓</div>
+        <!-- 使用手册模态框 -->
+        <div class="help-modal" id="helpModal" role="dialog" aria-labelledby="help-header" aria-modal="true">
+            <div class="help-header">
+                <h2 id="help-header">📘 系统使用手册</h2>
+                <button class="secondary" onclick="toggleManual()" role="button" aria-label="关闭帮助手册">× 关闭</button>
+            </div>
+            <div class="help-content">
+                <div class="help-section">
+                    <h3>🎯 核心功能</h3>
+                    <ul>
+                        <li>📥 支持TXT格式名单批量导入</li>
+                        <li>🎲 随机滚动点名动画效果</li>
+                        <li>📌 自动记录已点名学生状态</li>
+                        <li>🔄 一键重置系统状态</li>
+                    </ul>
+                </div>
+                <div class="help-section">
+                    <h3>📋 操作指南</h3>
+                    <div class="step">
+                        <h4>1. 导入名单</h4>
+                        <p>点击 <b>📤 导入名单 </b> → 选择TXT文件 → 自动解析</p>
+                        <small><b>要求：</b>每行一个姓名，UTF-8编码</small>
+                    </div>
+                    <div class="step">
+                        <h4>2. 开始点名</h4>
+                        <p>点击 <b>🎲 开始点名 </b> → 再次点击停止 → 选中学生高亮显示</p>
+                        <small><b>提示：</b>未点名学生会保持灰色状态</small>
+                    </div>
+                </div>
+                <div class="help-section">
+                    <h3>⚙️ 技术规范</h3>
+                    <ul>
+                        <li><b>环境</b>：Chrome 100+/Edge 95+/Firefox 90+</li>
+                        <li><b>数据格式</b>：纯文本/TXT</li>
+                        <li><b>兼容性</b>：PC/平板/手机端适配</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer">
+                © 2025 DouCY | 班级点名系统，本项目采用 <a
+                    href="https://github.com/dcyyd/class-roll-call-system/blob/main/LICENSE">MIT
+                    License</a> 开源协议
+            </div>
+        </footer>
+        <script src="./js/script.js"></script>
+    </body>
+</html>
