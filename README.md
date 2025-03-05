@@ -13,6 +13,7 @@
 > 一个轻量高效的随机点名工具，支持名单导入、动态展示和状态管理，助力教师提升课堂效率。
 
 ## 🌟 功能特性
+
 - **一键导入** - 支持 **`.txt`** 格式名单文件快速解析
 - **随机滚动** - 动态特效展示点名过程
 - **状态持久化** - 自动标记已点名学生
@@ -22,17 +23,20 @@
 ## 🚀 快速开始
 
 ### 环境准备
+
 - 现代浏览器（推荐 Chrome 90+/Edge 90+/Firefox 88+）
 - 文本编辑器（用于准备学生名单）
 
 ### 基础用法
+
 #### 1. 导入名单
+
 1. 点击 **`📤 导入名单`** 按钮
-2. 选择按行分隔的 **`.txt`** 文件  
-   （示例文件：[doc/name.txt](doc/name.txt)）
+2. 选择按行分隔的 **`.txt`** 文件（示例文件：[doc/name.txt](doc/name.txt)）
 3. 成功提示后即可开始操作
 
 #### 2. 随机点名
+
 | 操作							| 效果说明						|
 |------------------------------	|-----------------------------	|
 | 单击 **`🎲 开始点名`**		| 启动随机滚动动画				|
@@ -40,10 +44,11 @@
 | 点击 **`🔄 重置`**				| 清空所有点名记录				|
 
 #### 3. 界面示意
+
 ![](images/ui-showcase.png)
 
-
 ## 🛠️ 项目结构
+
 ```bash
 class-roll-call-system/
 ├── doc/
@@ -59,24 +64,30 @@ class-roll-call-system/
 ```
 
 ## 📥 源码获取
+
 ### 方式一：Git克隆（推荐）
+
 ```bash
 git clone https://github.com/dcyyd/class-roll-call-system.git
 cd class-roll-call-system
 ```
 
 ### 方式二：直接下载
+
 1. 访问 [**Releases页面**](https://github.com/dcyyd/class-roll-call-system/releases)
 2. 下载最新版 **`Source code.zip`**
 3. 解压后双击 **`index.html`** 即可运行
 
 ## 📜 开源协议
+
 本项目采用 **[MIT License](https://github.com/dcyyd/class-roll-call-system/blob/main/LICENSE)**，您可：
+
 - ✅ 自由使用/修改代码
 - ✅ 用于商业项目
 - ✅ 保留版权声明即可
 
 ## 📮 联系开发者
+
 | 联系方式					| 详情																	|
 |------------------------	|------------------------------											|
 | 📧 电子邮箱				| [dcyyd_kcug@yeah.net](mailto:dcyyd_kcug@yeah.net)						|

@@ -3,10 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="班级点名系统，方便教师进行随机点名，支持名单导入、重置等功能。">
-        <meta name="keywords" content="班级点名系统, 随机点名, 名单导入">
+        <meta name="description" content="专业的班级点名系统，专为教育机构和教师设计。方便快捷地进行随机点名，支持名单批量导入、状态重置等功能，助力高效课堂管理。">
+        <meta name="keywords" content="班级点名系统, 随机点名, 名单导入, 教育管理, 课堂管理, 教学工具">
+        <meta name="classification" content="Education, Classroom Management">
+        <meta name="language" content="Chinese">
+        <meta name="copyright" content="© 2025 DouCY">
+        <meta name="author" content="DouCY">
+        <meta name="date" content="2025-03-05">
+        <meta name="revised" content="2025-03-05">
+        <meta name="reviewer" content="DouCY">
+        <meta name="last-reviewed" content="2025-03-05">
+        <meta name="expires" content="never">
+        <meta name="rating" content="General">
+        <meta name="distribution" content="Global">
+        <meta name="coverage" content="Worldwide">
+        <meta name="geographical location" content="China">
+        <meta name="target audience" content="Educators, Teachers, School Administrators">
+        <meta name="theme-color" content="#ffffff">
         <link rel="icon" href="./images/logo/logo.ico" type="image/x-icon">
         <title>班级点名系统</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
@@ -22,17 +38,23 @@
                 <button id="startBtn">🎲 开始点名</button>
                 <button id="resetBtn" class="secondary">🔄 重置</button>
             </div>
-            <ul class="student-list" id="studentList"></ul>
+            <div class="roll-call-container">
+                <ul class="student-list" id="studentList"></ul>
+            </div>
         </main>
-        <!-- 新增帮助手册入口 -->
         <div class="manual-trigger" onclick="toggleManual()" role="button" aria-label="打开帮助手册">❓</div>
-        <!-- 使用手册模态框 -->
         <div class="help-modal" id="helpModal" role="dialog" aria-labelledby="help-header" aria-modal="true">
             <div class="help-header">
                 <h2 id="help-header">📘 系统使用手册</h2>
                 <button class="secondary" onclick="toggleManual()" role="button" aria-label="关闭帮助手册">× 关闭</button>
             </div>
             <div class="help-content">
+                <span class="code">
+                    <b><i class="fa-solid fa-code"></i></b>
+                    如需获取项目源码，请访问：
+                    <a href="https://github.com/dcyyd/class-roll-call-system"
+                        target="_blank">https://github.com/dcyyd/class-roll-call-system</a>
+                </span>
                 <div class="help-section">
                     <h3>🎯 核心功能</h3>
                     <ul>
@@ -67,7 +89,7 @@
         </div>
         <footer>
             <div class="footer">
-                © 2025 DouCY | 班级点名系统，本项目采用 <a
+                © 2025 <a href="https://dcyyd.github.io">DouCY</a> | 班级点名系统，本项目采用 <a
                     href="https://github.com/dcyyd/class-roll-call-system/blob/main/LICENSE">MIT
                     License</a> 开源协议
             </div>

@@ -1,3 +1,11 @@
+/**
+ * 班级点名系统样式文件
+ * @file 该文件负责定义班级点名系统的整体样式，包括页面布局、元素样式、动画效果等
+ * @author DouCY
+ * @version 1.0.0
+ * @license MIT
+ */
+
 /* 定义全局CSS变量，方便统一管理和修改样式 */
 :root {
     --primary-color: #4a90e2;
@@ -18,6 +26,11 @@
     font-display: swap;
 }
 
+/* 通用过渡效果类 */
+.transition {
+    transition: var(--transition);
+}
+
 /* 设置body的整体样式，包括字体、布局、背景等 */
 body {
     font-family: 'ResourceHanRoundedCN-Medium', 'Segoe UI', sans-serif;
@@ -34,8 +47,10 @@ body {
 
 /* 主内容区域容器样式 */
 main {
-    width: 1200px;
-    height: 850px;
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    margin: 2rem;
 }
 
 /* 通用容器样式，用于包裹页面主要内容 */
@@ -73,9 +88,10 @@ main {
 /* 显示区域样式，如显示点名结果等 */
 #display {
     font-size: 1.7rem;
-    margin: 2rem 0;
+    margin: 1rem 0; 
     font-weight: bold;
     text-shadow: var(--text-shadow);
+    max-width: 100%;
     min-height: 100px;
     display: flex;
     align-items: center;
@@ -83,6 +99,7 @@ main {
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius);
     transition: var(--transition);
+    box-sizing: border-box; 
 }
 
 /* 按钮组样式，用于布局多个按钮 */
@@ -91,6 +108,7 @@ main {
     gap: 1rem;
     justify-content: center;
     margin: 2rem 0;
+    flex-wrap: wrap;
 }
 
 /* 按钮通用样式 */
@@ -111,14 +129,6 @@ button {
 
 /* 按钮悬停时的样式 */
 button:hover {
-    -webkit-transform: scale(1.1);
-    /* Safari 和 Chrome */
-    -moz-transform: scale(1.1);
-    /* Firefox */
-    -ms-transform: scale(1.1);
-    /* Internet Explorer */
-    -o-transform: scale(1.1);
-    /* Opera */
     transform: scale(1.1);
     box-shadow: 0 0 10px #ccc;
 }
@@ -148,6 +158,19 @@ button.secondary {
 .file-input input[type="file"]:hover+button {
     transform: none;
     box-shadow: none;
+}
+
+/* 隐藏滚动条，但保留滚动功能 */
+.roll-call-container {
+    -ms-overflow-style: none;
+    /* 兼容IE和Edge */
+    scrollbar-width: none;
+    /* 兼容Firefox */
+}
+
+/* 针对Chrome、Safari等Webkit内核浏览器 */
+.roll-call-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* 学生列表样式，用于展示学生名单 */
@@ -199,15 +222,16 @@ button.secondary {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-height: 900px;
+    width: 90%;
     max-width: 700px;
+    max-height: 90vh;
     background: var(--bg-gradient);
     border: 3px solid #7ed321;
     border-radius: 15px;
-    padding: 3rem;
+    padding: 2rem;
     z-index: 1000;
     box-shadow: 0 0 30px rgba(0, 255, 157, 0.5);
+    overflow-y: auto;
 }
 
 /* 显示使用手册弹窗的动画类 */
@@ -240,7 +264,7 @@ button.secondary {
     padding: 0.5rem 1rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 /* 使用手册弹窗关闭按钮悬停样式 */
@@ -251,8 +275,19 @@ button.secondary {
 /* 使用手册内容区域样式 */
 .help-content {
     max-height: 70vh;
-    /* overflow-y: auto; */
     padding: 1rem;
+}
+
+/* 源代码 */
+.code a{
+    color: #ccc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.code a:hover{
+    color: #7ed321;
+    text-decoration: underline;
 }
 
 /* 使用手册内容部分的章节样式 */
@@ -285,7 +320,7 @@ button.secondary {
     align-items: center;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: var(--transition);
 }
 
 /* 使用手册按钮悬停样式 */
@@ -355,17 +390,48 @@ button.secondary {
     color: #7ed321;
 }
 
-/* 响应式设计，当屏幕宽度小于768px时调整学生列表布局 */
+/* 响应式设计，优化移动端自适应 */
+@media (max-width: 1200px) {
+
+    main,
+    .container {
+        width: 90%;
+        margin: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .student-list {
         columns: 2;
         column-gap: 0.2rem;
     }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
-/* 响应式设计，当屏幕宽度小于480px时进一步调整学生列表布局 */
 @media (max-width: 480px) {
     .student-list {
         columns: 1;
+    }
+
+    .help-modal {
+        padding: 1rem;
+    }
+
+    .help-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .help-header button {
+        margin-top: 1rem;
     }
 }
