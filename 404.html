@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404 - 页面不存在">
+    <meta name="keywords" content="404, 错误, 页面">
+    <meta name="author" content="DouCY">
+    <meta name="robot" content="noindex, nofollow">
+    <link rel="icon" href="./assets/images/logo/logo.ico" type="image/x-icon">
+    <title>404 - 页面不存在</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #6974dc, #7357b3);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h1 {
+            font-size: 5em;
+            margin: 0;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #fff;
+            }
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            filter: blur(2px);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(50vw);
+                opacity: 0;
+            }
+        }
+
+        .back-home {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <h1 class="glow">404</h1>
+            <p>哎呀，页面好像去度假了~</p>
+            <a href="http://kfufys.top/" class="back-home">返回首页</a>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            console.warn('右键已禁用');
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+                console.warn('开发者工具已禁用');
+            }
+        });
+    </script>
+</body>
+
+</html>

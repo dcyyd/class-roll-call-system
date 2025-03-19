@@ -1,0 +1,437 @@
+/**
+ * 班级点名系统样式文件
+ * @file 该文件负责定义班级点名系统的整体样式，包括页面布局、元素样式、动画效果等
+ * @author DouCY
+ * @version 1.0.0
+ * @license MIT
+ */
+
+/* 定义全局CSS变量，方便统一管理和修改样式 */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #7ed321;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    --box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --border-radius: 15px;
+    --transition: all 0.3s;
+}
+
+/* 引入自定义字体 */
+@font-face {
+    font-family: 'ResourceHanRoundedCN-Medium';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/ResourceHanRoundedCN-Medium.ttf') format('truetype');
+    font-display: swap;
+}
+
+/* 通用过渡效果类 */
+.transition {
+    transition: var(--transition);
+}
+
+/* 设置body的整体样式，包括字体、布局、背景等 */
+body {
+    font-family: 'ResourceHanRoundedCN-Medium', 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: var(--bg-gradient);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 主内容区域容器样式 */
+main {
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    margin: 2rem;
+}
+
+/* 通用容器样式，用于包裹页面主要内容 */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+/* 定义具有发光动画效果的边框样式 */
+.glowing-border {
+    position: relative;
+    animation: glow 2s infinite alternate;
+}
+
+/* 发光动画关键帧 */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    to {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* 显示区域样式，如显示点名结果等 */
+#display {
+    font-size: 1.7rem;
+    margin: 1rem 0; 
+    font-weight: bold;
+    text-shadow: var(--text-shadow);
+    max-width: 100%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-sizing: border-box; 
+}
+
+/* 按钮组样式，用于布局多个按钮 */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+/* 按钮通用样式 */
+button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+}
+
+/* 按钮悬停时的样式 */
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ccc;
+}
+
+/* 次要按钮样式，使用不同背景颜色 */
+button.secondary {
+    background: var(--secondary-color);
+}
+
+/* 文件输入框的包裹样式，用于隐藏原生样式并进行自定义 */
+.file-input {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* 隐藏原生文件输入框 */
+.file-input input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+/* 阻止文件输入框影响按钮悬停效果 */
+.file-input input[type="file"]:hover+button {
+    transform: none;
+    box-shadow: none;
+}
+
+/* 隐藏滚动条，但保留滚动功能 */
+.roll-call-container {
+    -ms-overflow-style: none;
+    /* 兼容IE和Edge */
+    scrollbar-width: none;
+    /* 兼容Firefox */
+}
+
+/* 针对Chrome、Safari等Webkit内核浏览器 */
+.roll-call-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 学生列表样式，用于展示学生名单 */
+.student-list {
+    list-style: none;
+    padding: 0;
+    columns: 7;
+    column-gap: 0.2rem;
+    margin-top: 2rem;
+    max-height: 600px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* 单个学生项样式 */
+.student-item {
+    min-width: 80px;
+    padding: 0.8rem 0.5rem;
+    margin: 0.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: var(--transition);
+    break-inside: avoid;
+    text-align: center;
+    display: inline-block;
+    width: calc(100% - 0.4rem);
+    box-sizing: border-box;
+}
+
+/* 已选中学生项的样式 */
+.student-item.picked {
+    background: rgba(0, 0, 0, 0.3);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* 粒子背景样式，通常用于添加动态背景效果 */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 使用手册弹窗样式 */
+.help-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    background: var(--bg-gradient);
+    border: 3px solid #7ed321;
+    border-radius: 15px;
+    padding: 2rem;
+    z-index: 1000;
+    box-shadow: 0 0 30px rgba(0, 255, 157, 0.5);
+    overflow-y: auto;
+}
+
+/* 显示使用手册弹窗的动画类 */
+.help-modal.visible {
+    display: block;
+    animation: modalFade 0.5s ease;
+}
+
+/* 使用手册弹窗头部样式 */
+.help-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #7ed321;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* 使用手册弹窗头部标题样式 */
+.help-header h2 {
+    color: #7ed321;
+    font-size: 24px;
+}
+
+/* 使用手册弹窗关闭按钮样式 */
+.help-header button {
+    background: rgba(0, 255, 157, 0.2);
+    border: 1px solid #7ed321;
+    color: #7ed321;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* 使用手册弹窗关闭按钮悬停样式 */
+.help-header button:hover {
+    background: rgba(0, 255, 157, 0.4);
+}
+
+/* 使用手册内容区域样式 */
+.help-content {
+    max-height: 70vh;
+    padding: 1rem;
+}
+
+/* 源代码 */
+.code a{
+    color: #ccc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.code a:hover{
+    color: #7ed321;
+    text-decoration: underline;
+}
+
+/* 使用手册内容部分的章节样式 */
+.help-section {
+    margin-bottom: 3rem;
+}
+
+/* 使用手册章节标题样式 */
+.help-section h3 {
+    color: #7ed321;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 20px;
+}
+
+/* 使用手册按钮样式 */
+.manual-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #7ed321;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: var(--transition);
+}
+
+/* 使用手册按钮悬停样式 */
+.manual-trigger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ccc;
+}
+
+/* 使用手册内容通用样式 */
+.manual-content {
+    font-size: 16px;
+    font-weight: normal;
+    text-indent: 2em;
+}
+
+/* 使用手册内容中标题的加粗样式 */
+.manual-content h2,
+.manual-content h3,
+.manual-content h4 {
+    font-weight: bold;
+}
+
+/* 手册中步骤相关样式 */
+.step {
+    margin-bottom: 2rem;
+}
+
+/* 手册中步骤标题样式 */
+.step h4 {
+    padding-left: 25px;
+    color: #7ed321;
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+}
+
+/* 手册中步骤描述样式 */
+.step p {
+    padding-left: 50px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* 手册中步骤提示样式 */
+.step small {
+    padding-left: 50px;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer a:hover {
+    font-weight: bold;
+    color: #7ed321;
+}
+
+/* 响应式设计，优化移动端自适应 */
+@media (max-width: 1200px) {
+
+    main,
+    .container {
+        width: 90%;
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .student-list {
+        columns: 2;
+        column-gap: 0.2rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .student-list {
+        columns: 1;
+    }
+
+    .help-modal {
+        padding: 1rem;
+    }
+
+    .help-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .help-header button {
+        margin-top: 1rem;
+    }
+}

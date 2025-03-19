@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- 首页 -->
+    <url>
+        <loc>https://yourdomain.com/index.html</loc>
+        <lastmod>2024-10-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- 关于我部分 -->
+    <url>
+        <loc>https://yourdomain.com/index.html#about-me</loc>
+        <lastmod>2024-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 联系我部分 -->
+    <url>
+        <loc>https://yourdomain.com/index.html#find-me</loc>
+        <lastmod>2024-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 参与项目部分 -->
+    <url>
+        <loc>https://yourdomain.com/index.html#involvement-in-projects</loc>
+        <lastmod>2024-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 友情链接部分 -->
+    <url>
+        <loc>https://yourdomain.com/index.html#partner-links</loc>
+        <lastmod>2024-10-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>
