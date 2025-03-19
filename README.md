@@ -1,7 +1,3 @@
-以下是优化排版并加入emoji的 README.md：
-
----
-
 <div align="center">
   <h1>🎓 班级点名系统</h1>
   <p>
@@ -21,8 +17,6 @@
   <p>✨ 轻量高效的随机点名工具，支持名单导入、动态展示和状态管理，助力教师提升课堂效率。</p>
 </div>
 
----
-
 ### 🌟 **核心功能**
 
 - 📤 **一键导入** - 支持 `.txt` 格式名单文件快速解析
@@ -31,7 +25,6 @@
 - 📱💻 **多端适配** - 响应式设计兼容PC/移动设备
 - 🔓 **开源免费** - MIT协议可自由二次开发
 
----
 
 ### 🚀 **快速开始**
 
@@ -58,12 +51,11 @@
 
   2.3.1 **预览图片**
 
-    ![界面预览](./assets/images/ui-showcase.png)
-    
+  - ![界面预览](./assets/images/ui-showcase.png)
+
   2.3.2 **在线演示**
 
-    **点击查看在线演示** [https://dcyyd.github.io/class-roll-call-system/](https://dcyyd.github.io/class-roll-call-system/)
-
+  - **点击查看在线演示** [https://dcyyd.github.io/class-roll-call-system/](https://dcyyd.github.io/class-roll-call-system/)
 
 ### 🛠️ **项目结构**
 
@@ -85,8 +77,6 @@ class-roll-call-system/
 └─ sitemap.xml       # 网站地图
 ```
 
----
-
 ### 📥 **源码获取**
 
 ```bash
@@ -98,8 +88,6 @@ cd class-roll-call-system
 start index.html
 ```
 
----
-
 ### 📜 **开源协议**
 
 本项目采用 **[MIT License](https://github.com/dcyyd/class-roll-call-system/blob/main/LICENSE)**，您可：
@@ -107,8 +95,6 @@ start index.html
 - ✅ 自由使用/修改代码
 - ✅ 用于商业项目
 - ✅ 保留版权声明即可
-
----
 
 ### 📮 **联系开发者**
 
